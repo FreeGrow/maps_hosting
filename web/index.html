@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+    <!--
+      If you are serving your web app in a path other than the root, change the
+      href value below to reflect the base path you are serving from.
+
+      The path provided below has to start and end with a slash "/" in order for
+      it to work correctly.
+
+      For more details:
+      * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
+
+      This is a placeholder for base href that will be replaced by the value of
+      the `--base-href` argument provided to `flutter build`.
+    -->
+<!--    <base href="/growmaps_official/">-->
+    <base href="/">
+    <!--  <base href="/">-->
+
+    <meta charset="UTF-8">
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+    <meta name="description" content="Use Growmaps Indoor Navigation to easily navigate complex indoor spaces and quickly reach your destination.">
+    <meta property="og:title" content="Growmaps"/>
+    <meta property="og:description" content="Try our indoor navigation service."/>
+    <meta property="og:image"
+          content="https://firebasestorage.googleapis.com/v0/b/grow-maps-platform.appspot.com/o/icon%2Fmeta_logo_compress.png?alt=media&token=f49281b3-5bc6-457d-a84d-afcf2f7c7ee8"/>
+    <meta property="og:url" content="https://app.growmaps.io"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:site_name" content="그로우맵스"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="theme-color" content="#FFFFFF">
+    <meta name="referrer" content="no-referrer-when-downgrade"/>
+    <!-- iOS meta tags & icons -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="platform_growmaps">
+    <!--  <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="google-signin-client_id" content="250085546308-j11oqepb9tpk5dctu4selv4j2re4302s.apps.googleusercontent.com">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png"/>
+    <link rel="apple-touch-icon" href="apple-icon-152x152.png"/>
+    <title>Growmaps</title>
+<!--    Google Search Console Page Name Tag-->
+    <script type="application/ld+json">
+        {
+            "@context" : "https://schema.org",
+            "@type" : "WebSite",
+            "name" : "growmaps",
+            "alternateName" : "growmaps.io",
+            "url" : "https://growmaps.io/"
+        }
+    </script>
+    <link rel="manifest" href="manifest.json">
+    <!--  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>-->
+    <!--  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>-->
+    <!--  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-messaging.js"></script>-->
+
+
+    <!--  Mapbox 3.1.2 에서 3.3.0 으로 올려봄.. ios 자꾸 터져서... 혹시 개선되지않았을까?-->
+<!--    <link href="https://api.mapbox.com/mapbox-gl-js/v3.6.0/mapbox-gl.css" rel="stylesheet">-->
+<!--    <script src="https://api.mapbox.com/mapbox-gl-js/v3.6.0/mapbox-gl.js"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.7.6/lottie.min.js"></script>
+    <script type="text/javascript" src="https://appleid.cdn-apple.com/appleauth/static/jsapi/appleid/1/en_US/appleid.auth.js"></script>
+    <script type="application/javascript" src="/assets/packages/flutter_inappwebview_web/assets/web/web_support.js" defer></script>
+    <script>
+        // The value below is injected by flutter build, do not touch.
+        var serviceWorkerVersion = "2740723580";
+        console.log('serviceWorkerVersion : ', serviceWorkerVersion);
+    </script>
+
+
+    <!-- Google Analytics Script Code -->
+    <meta name="naver-site-verification" content="5db1dd728505868419afcfb8f26409a4d3efcc0e" />
+    <meta name="google-site-verification" content="m-1BUwE95AKZJ8u0vfSbsfNt_sjKq1Bjyf0q9m3Z0PA" />
+
+    <!-- This script adds the flutter initialization JS code -->
+    <script src="flutter.js" defer></script>
+    <style>
+        body, html {
+          margin: 0;
+          padding: 0;
+          height: 100%;
+          overflow: hidden; /* 스크롤바 방지 */
+        }
+
+        #app-container {
+          display: flex;
+          flex-direction: column;
+
+          align-items: center;
+          height: 100%;
+        }
+
+        .lottie-container {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        #lottie-container-1 {
+          height: 2vh;
+          width: auto;
+          position: absolute;
+          top: 40%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+        #main_logo_image {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+        #lottie-container-2 {
+          position: fixed; /* 요소의 위치를 뷰포트에 상대적으로 고정 */
+          bottom: 2.5vh; /* 하단에 위치하도록 설정 */
+          left: 0; /* 왼쪽 가장자리에 위치하도록 설정 */
+          width: 100%; /* 너비를 화면 전체 너비로 설정 */
+          display: flex;
+          justify-content: center; /* 내부 요소를 중앙에 정렬 */
+          align-items: center;
+          height: 12vh; /* 높이 설정, 필요에 따라 조절 */
+          padding-bottom: 1vh;
+        }
+        #bottom-logo-image {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          position: absolute;
+          top: 83%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+    </style>
+    <script>
+        // Safari에서 touch가 두번되는경우 확대가되는 제스처를 없애기 위한 기능 //
+        var lastTouchEnd = 0;
+        document.documentElement.addEventListener('touchend', function (event) {
+            var now = (new Date()).getTime();
+            if (now - lastTouchEnd <= 500) {
+              event.preventDefault();
+            }
+            lastTouchEnd = now;
+        }, false);
+    </script>
+
+    <script>
+    function getCompassFromDeviceOrientation(event){
+        var declinationAngle = -7;
+        var compassdir;
+        if(event.webkitCompassHeading) {
+          // Apple works only with this, alpha doesn't work
+          compassdir = event.webkitCompassHeading + declinationAngle;
+        }
+        else compassdir = -(event.alpha + declinationAngle);
+
+        if(compassdir >= 360) compassdir -= 360;
+        else if(compassdir <= -360) compassdir += 360;
+
+        return compassdir;
+    }
+
+    function requestDeviceOrientationCallBack(callback) {
+        if (typeof DeviceOrientationEvent.requestPermission === 'function') {
+            console.log('DeviceOrientationEvent.requestPermission is function IN CALLBACK');
+            DeviceOrientationEvent.requestPermission().then(permissionState => {
+                if (permissionState === 'granted') {
+                    callback(true);
+                } else {
+                    console.log('DeviceOrientationEvent.requestPermission permissionState CALLBACK :    ', permissionState);
+                    callback(false);
+                }
+            }).catch(console.error);
+        } else {
+            console.log('DeviceOrientationEvent.requestPermission is not function CALLBACK');
+            callback(true);
+        }
+    }
+
+    function requestDeviceOrientation() {
+        DeviceOrientationEvent.requestPermission();
+        return new Promise((resolve, reject) => {
+            if (typeof DeviceOrientationEvent.requestPermission === 'function') {
+                console.log('DeviceOrientationEvent.requestPermission is function IN');
+                DeviceOrientationEvent.requestPermission().then(permissionState => {
+                    console.log('DeviceOrientationEvent.requestPermission permissionState   :    ', permissionState);
+                    if (permissionState === 'granted') {
+                        resolve(true);
+                    } else {
+                        resolve(false);
+                    }
+                }).catch(error => {
+                    console.error('DeviceOrientationEvent.requestPermission error:', error);
+                    resolve(false);
+                });
+            } else {
+                console.log('DeviceOrientationEvent.requestPermission is not function');
+                resolve(true); // 권한 요청이 필요하지 않은 경우 true 반환
+            }
+        });
+    }
+
+
+    </script>
+
+</head>
+
+<body>
+<div id="app-container">
+    <div id="lottie-container-1" class="lottie-container">
+        <img id="main-logo-image" src="" style="height: 5vh;">
+    </div>
+    <div id="flutter-app"></div>
+    <img id="bottom-logo-image" src="" style="height: 2.8vh;">
+    <div id="lottie-container-2" class="lottie-container"></div>
+    <script src="flutter_bootstrap.js" async></script>
+</div>
+
+<script>
+    document.getElementById('main-logo-image').src = "./assets/growmaps_logo.png";
+    document.getElementById('main-logo-image').style.height = "4vh";
+</script>
+
+<script type='text/javascript' charset='UTF-8'>
+    var inappdeny_exec_vanillajs = (callback) => {
+        if(document.readyState !== 'loading'){
+            callback();
+        }else{
+            document.addEventListener('DOMContentLoaded', callback);
+        }
+    }
+    inappdeny_exec_vanillajs(() => {
+        /* Do things after DOM has fully loaded */
+        function copytoclipboard(val){
+            var t = document.createElement("textarea");
+            document.body.appendChild(t);
+            t.value = val;
+            t.select();
+            document.execCommand('copy');
+            document.body.removeChild(t);
+        };
+        function inappbrowserout(){
+            copytoclipboard(window.location.href);
+            // alert('URL주소가 복사되었습니다.\n\nSafari가 열리면 주소창을 길게 터치한 뒤, "붙여놓기 및 이동"를 누르면 정상적으로 이용하실 수 있습니다.');
+            location.href='x-web-search://?';
+        };
+
+        var useragt = navigator.userAgent.toLowerCase();
+        var target_url = location.href;
+
+        if(useragt.match(/kakaotalk/i)){
+
+            //카카오톡 외부브라우저로 호출
+
+            // 안드로이드 기기에서 우선순위에 따라 크롬, 삼성 브라우저, 기본 브라우저로 열기
+            if (useragt.match(/android/i)) {
+                // 기본 브라우저로 열기
+                location.href = 'kakaotalk://web/openExternal?url='+encodeURIComponent(target_url);
+            }
+
+            // iOS 기기에서 우선순위에 따라 크롬, 사파리로 열기
+            if (useragt.match(/iphone|ipad|ipod/i)) {
+                // ios에서 QR로 찍어버리면 기본브라우저로 열리기때문에, 그냥 시작자체를 기본브라우저로 하는것이 좋음. 크롬으로 강제화하면 데이터 혼선이 생김
+                location.href = 'kakaotalk://web/openExternal?url='+encodeURIComponent(target_url);
+                setTimeout(function(){
+                    location.href = "kakaoweb://closeBrowser";
+                }, 1000);
+            }
+
+        }else if(useragt.match(/line/i)){
+            //라인 외부브라우저로 호출
+            if(target_url.indexOf('?') !== -1){
+                location.href = target_url+'&openExternalBrowser=1';
+            }else{
+                location.href = target_url+'?openExternalBrowser=1';
+            }
+
+        } else if(  (useragt.match(/inapp|snapchat|wirtschaftswoche|thunderbird|instagram|everytimeapp|whatsApp|electron|wadiz|aliapp|zumapp|iphone(.*)whale|kakaostory|band|twitter|DaumApps|DaumDevice\/mobile|FB_IAB|FB4A|FBAN|FBIOS|FBSS|trill\/[^1]/i))  ){
+
+            if(useragt.match(/iphone|ipad|ipod/i)){
+
+            }
+            else{
+              location.href='intent://'+target_url.replace(/https?:\/\//i,'')+'#Intent;scheme=http;package=com.android.chrome;end';
+            }
+        }
+    });
+</script>
+
+<script>
+      var animation2 = bodymovin.loadAnimation({
+        container: document.getElementById('lottie-container-2'),
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+        path: './assets/loading-2.json' // 두 번째 Lottie JSON 파일의 경로
+      });
+
+</script>
+<!--<script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js"></script>-->
+<!--<script type="text/javascript" src="https://unpkg.com/@zxing/library@0.19.1"></script>-->
+</body>
+</html>
